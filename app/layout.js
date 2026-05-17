@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { SITE_CONFIG } from "@/config/site";
-import "./globals.css";
+import { schoolConfig } from "@/config/schoolConfig";
+import "./global.css";
 import Header from "../Components/Header";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: SITE_CONFIG.school.name,
-  description: SITE_CONFIG.school.tagline,
+  title: schoolConfig.school.name,
+  description: schoolConfig.school.tagline,
 };
 
 export default function RootLayout({ children }) {

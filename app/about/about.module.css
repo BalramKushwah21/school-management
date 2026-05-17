@@ -1,0 +1,388 @@
+.aboutPage {
+  background: #0b1020;
+  color: white;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.section {
+  padding: 100px 8%;
+  position: relative;
+}
+
+.sectionDark {
+  padding: 100px 8%;
+  background: linear-gradient(135deg, #111827, #1f2937);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionHeader h2 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.sectionHeader p {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  max-width: 750px;
+  margin: auto;
+  line-height: 1.8;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+    url("https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(2px);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1.2s ease;
+}
+
+.smallHeading {
+  font-size: 1rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #93c5fd;
+}
+
+.hero h1 {
+  font-size: 4.5rem;
+  margin: 20px 0;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.tagline {
+  font-size: 1.4rem;
+  color: #dbeafe;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.8;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 35px;
+  flex-wrap: wrap;
+}
+
+.heroButtons button {
+  padding: 16px 34px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.35s ease;
+}
+
+.heroButtons button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.35);
+}
+
+.secondaryBtn {
+  background: transparent !important;
+  border: 2px solid white !important;
+}
+
+/* TIMELINE */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.timelineCard {
+  padding: 35px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px);
+  transition: 0.35s ease;
+}
+
+.timelineCard:hover {
+  transform: translateY(-8px);
+}
+
+.timelineCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+/* CARDS */
+.vmGrid,
+.achievementGrid,
+.accreditationBox,
+.philosophyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px);
+  padding: 35px;
+  border-radius: 24px;
+  transition: 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h2,
+.card h3 {
+  margin-bottom: 18px;
+}
+
+.card p,
+.card li {
+  color: #d1d5db;
+  line-height: 1.8;
+}
+
+.card ul {
+  padding-left: 20px;
+}
+
+/* MESSAGE SECTIONS */
+.messageCard,
+.messageCardReverse {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 40px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 28px;
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.messageCardReverse {
+  grid-template-columns: 1fr 220px;
+}
+
+.messageCard h2,
+.messageCardReverse h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.messageCard h4,
+.messageCardReverse h4 {
+  font-size: 1.1rem;
+  color: #93c5fd;
+  margin-bottom: 20px;
+}
+
+.messageCard p,
+.messageCardReverse p {
+  line-height: 1.9;
+  color: #d1d5db;
+}
+
+.avatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  box-shadow: 0 20px 50px rgba(37, 99, 235, 0.35);
+}
+
+/* VALUES */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.valueCard {
+  padding: 30px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.35s ease;
+  text-align: center;
+}
+
+.valueCard:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+.valueNumber {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #60a5fa;
+  margin-bottom: 15px;
+}
+
+/* STATS */
+.statsSection {
+  padding: 100px 8%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  background: linear-gradient(135deg, #1d4ed8, #0f172a);
+}
+
+.statCard {
+  text-align: center;
+  padding: 35px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px);
+}
+
+.statCard h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.statCard p {
+  font-size: 1.1rem;
+  color: #dbeafe;
+}
+
+/* INFRASTRUCTURE */
+.infrastructureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.infrastructureCard {
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.08);
+  text-align: center;
+  transition: 0.35s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.infrastructureCard:hover {
+  transform: translateY(-10px);
+  background: rgba(255,255,255,0.12);
+}
+
+/* CTA */
+.ctaSection {
+  padding: 120px 8%;
+  text-align: center;
+  background: linear-gradient(135deg, #111827, #0f172a);
+}
+
+.ctaSection h2 {
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+}
+
+.ctaSection p {
+  max-width: 700px;
+  margin: auto;
+  color: #cbd5e1;
+  line-height: 1.8;
+  font-size: 1.15rem;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .sectionHeader h2 {
+    font-size: 2.4rem;
+  }
+
+  .messageCard,
+  .messageCardReverse {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .avatar {
+    margin: auto;
+  }
+
+  .messageCardReverse {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 768px) {
+  .section,
+  .sectionDark,
+  .statsSection,
+  .ctaSection {
+    padding: 70px 6%;
+  }
+
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .heroButtons button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .ctaSection h2 {
+    font-size: 2.2rem;
+  }
+
+  .statCard h2 {
+    font-size: 2.2rem;
+  }
+}

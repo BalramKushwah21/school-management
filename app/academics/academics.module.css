@@ -1,0 +1,318 @@
+.academicsPage {
+  background: #0b1020;
+  color: white;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* HERO */
+.hero {
+  min-height: 85vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)),
+    url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(2px);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1s ease;
+}
+
+.smallHeading {
+  color: #93c5fd;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 1rem;
+}
+
+.hero h1 {
+  font-size: 4.5rem;
+  margin: 20px 0;
+  font-weight: 800;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  color: #dbeafe;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.8;
+}
+
+/* NAV */
+.stickyNav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 16, 32, 0.9);
+  backdrop-filter: blur(18px);
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-wrap: wrap;
+}
+
+.stickyNav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.stickyNav a:hover {
+  color: #60a5fa;
+}
+
+/* SECTIONS */
+.academicSection,
+.seniorSection,
+.darkSection {
+  padding: 100px 8%;
+}
+
+.darkSection {
+  background: linear-gradient(135deg, #111827, #1f2937);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionHeader h2 {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  font-weight: 800;
+}
+
+.sectionHeader p {
+  color: #cbd5e1;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* GRID */
+.grid,
+.streamGrid,
+.excellenceGrid {
+  display: grid;
+  gap: 28px;
+}
+
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.streamGrid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-bottom: 40px;
+}
+
+.excellenceGrid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* CARDS */
+.card,
+.streamCard {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+  padding: 32px;
+  transition: 0.35s ease;
+}
+
+.card:hover,
+.streamCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.card h3,
+.streamCard h3 {
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+  color: #93c5fd;
+}
+
+.card ul,
+.streamCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card li,
+.streamCard li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+.card li:last-child,
+.streamCard li:last-child {
+  border-bottom: none;
+}
+
+/* CTA */
+.ctaSection {
+  padding: 120px 8%;
+  text-align: center;
+  background: linear-gradient(135deg, #0f172a, #111827);
+}
+
+.ctaSection h2 {
+  font-size: 3rem;
+  margin-bottom: 18px;
+  font-weight: 800;
+}
+
+.ctaSection p {
+  max-width: 760px;
+  margin: auto;
+  color: #cbd5e1;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+/* BUTTONS */
+.heroButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.heroButtons button {
+  padding: 16px 32px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.35s ease;
+}
+
+.heroButtons button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 35px rgba(37, 99, 235, 0.35);
+}
+
+.secondaryBtn {
+  background: transparent !important;
+  border: 2px solid white !important;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .sectionHeader h2 {
+    font-size: 2.3rem;
+  }
+
+  .stickyNav {
+    gap: 14px;
+    padding: 14px;
+  }
+
+  .stickyNav a {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .academicSection,
+  .seniorSection,
+  .darkSection,
+  .ctaSection {
+    padding: 70px 6%;
+  }
+
+  .hero {
+    min-height: 70vh;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .sectionHeader h2 {
+    font-size: 2rem;
+  }
+
+  .heroButtons button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .ctaSection h2 {
+    font-size: 2.1rem;
+  }
+
+  .stickyNav {
+    position: relative;
+  }
+}
+
+@media (max-width: 480px) {
+  .card,
+  .streamCard {
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .card h3,
+  .streamCard h3 {
+    font-size: 1.2rem;
+  }
+
+  .stickyNav {
+    flex-direction: column;
+    align-items: center;
+  }
+}

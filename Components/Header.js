@@ -1,5 +1,5 @@
 "use client";
-import { SITE_CONFIG } from "@/config/site";
+import { schoolConfig } from "@/config/schoolConfig";
 
 import { useState } from "react";
 import styles from "./Header.module.css";
@@ -20,7 +20,7 @@ export default function Header() {
               alt="School Logo"
               className={styles.logoImage}
             />
-            <h1 className={styles.heading}>{SITE_CONFIG.school.name}</h1>
+            <h1 className={styles.heading}>{schoolConfig.school.name}</h1>
           </div>
 
           <nav className={styles.desktopMenu}>
