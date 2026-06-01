@@ -12,6 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
 export const metadata = {
   title: "School Management",
   description: "A school management system built with Next.js and React.",
@@ -29,4 +30,6 @@ export default function RootLayout({ children }) {
         </body>
     </html>
   );
+
+  
 }
