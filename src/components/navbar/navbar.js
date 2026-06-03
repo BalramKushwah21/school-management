@@ -35,8 +35,7 @@ export default function Navbar({children}) {
 
 
       </aside>
-      <div className={style.content}>
-
+  
       <header className={style.header } style={{width: isMenuOpen?"84%":"100%"}}>
         <button className={style.menuButton} onClick={() => setIsMenuOpen(!isMenuOpen)}>
           ☰
@@ -48,9 +47,6 @@ export default function Navbar({children}) {
       <main className={style.page}>
             {children}
         </main>
-      </div>
-      
-
     </div>
   );
 }

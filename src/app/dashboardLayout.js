@@ -1,9 +1,8 @@
 import React from 'react'
 
-export default function Admissions() {
+export default function dashboardLayout() {
   return (
     <div>
-      Admission Page
       
     </div>
   )
