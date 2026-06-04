@@ -1,10 +1,12 @@
 import Image from "next/image";
-import Header from "../Components/header/header";
+import Navbar from "@/components/navbar/navbar";
 
-export default function Home() {
+
+export default function Home({children}) {
   return (
     <div>
-      <Header />
+      <Navbar />
+      {children}
     </div>
   );
 }
