@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       
-      this
+      This is Dashboard Page
     </div>
   );
 }

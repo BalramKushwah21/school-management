@@ -34,10 +34,10 @@ export default function Navbar({children}) {
 
       </aside>
 
-      <div>
+      <div className={style.container}>
 
   
-        <header className={style.header } style={{width: isMenuOpen?"84vw":"100vw"}}>
+        <header className={style.header } style={{width: isMenuOpen?"82vw":"99vw"}}>
 
         <button className={style.menuButton} onClick={() => setIsMenuOpen(!isMenuOpen)}>
           ☰
@@ -46,7 +46,7 @@ export default function Navbar({children}) {
 
         </header>
 
-      <main className={style.content} style={{width: isMenuOpen?"84vw":"100vw"}}>
+      <main className={style.content} style={{width: isMenuOpen?"82vw":"100vw"}}>
         {children}
       </main>
     
