@@ -13,7 +13,7 @@ export default function Navbar({children}) {
   
  
   return (
-    <div className={style.mainContainer}>
+    <div className={style.mainContainer}  >
       <aside className={style.sidebar} style={{display:isMenuOpen?"flex":"none",}} >
         <h2 className={style.logo}>School Management</h2>
         <Link href="/" className={style.link}>Dashboard</Link>
@@ -32,21 +32,25 @@ export default function Navbar({children}) {
         <Link href="/settings" className={style.link}>Settings</Link>
 
 
-
-
       </aside>
+
+      <div>
+
   
-      <header className={style.header } style={{width: isMenuOpen?"84%":"100%"}}>
+        <header className={style.header } style={{width: isMenuOpen?"84vw":"100vw"}}>
+
         <button className={style.menuButton} onClick={() => setIsMenuOpen(!isMenuOpen)}>
           ☰
         </button>
         <h1 className={style.pageTitle}>{page.toUpperCase()|| "DASHBOARD"}</h1>
 
+        </header>
 
-      </header>
-      <main className={style.page}>
-            {children}
-        </main>
+      <main className={style.content} style={{width: isMenuOpen?"84vw":"100vw"}}>
+        {children}
+      </main>
+    
+      </div>
     </div>
   );
 }

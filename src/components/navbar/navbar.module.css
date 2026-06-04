@@ -10,6 +10,7 @@
   background-color: blueviolet;
   width: 16%;
   height: 100vh;
+ 
 
 }
 .logo{
@@ -24,10 +25,18 @@
 .header {
   display: flex;
   align-items: center;
-  width: 84%;
-  height: 50px;
+  
+  height: 8vh;
+  border: 2px solid black;
+ 
+}
+
+.content{
+  width: 84vw;
+  height: 92vh;
   border: 2px solid black;
 }
+
 .link{
   margin:10px 0px 10px 50px;
   color: white;
