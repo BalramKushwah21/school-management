@@ -1,63 +1,98 @@
 .mainContainer {
   display: flex;
   min-height: 100vh;
-  border: 2px solid black;
- 
+  background-color: #f0f2f7;
 }
 
 
-.container{
-  width: 100vw;
-  height: 100vh;
-}
 .sidebar {
-  transition: all 1s ease in-out;
+  display: flex;
   flex-direction: column;
-  background-color: blueviolet;
-  width: 21vw;
+  width: 260px;
+  min-width: 260px;
   height: 100vh;
- 
+  background: linear-gradient(180deg, #6d28d9, #9333ea);
+  overflow-y: auto;
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.sidebar:hover {
+  box-shadow: 4px 0px 20px rgba(0,0,0,0.2);
+}
 
-}
-.logo{
+.logo {
   color: white;
-  width: 100%;
-  height: 50px; 
-  padding: 20px;
-  font-size: larger;
-  font-weight: 800;
+  text-align: center;
+  padding: 25px 15px;
+  font-size: 22px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
+.logo:hover {
+  letter-spacing: 1px;
+  transform: scale(1.05);
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  padding: 14px 20px;
+  margin: 4px 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.link:hover {
+  background-color: rgba(255,255,255,0.15);
+  transform: translateX(8px);
+  box-shadow: 0 4px 10px rgba(255,255,255,0.15);
+}
+
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
 
 .header {
   display: flex;
   align-items: center;
-  width: 100vw;
-  height: 8vh;
-  border: 2px solid black;
- 
+  height: 70px;
+  background-color: white;
+  padding: 0 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-
-.content{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 92vh;
-  box-sizing: border-box;
+.header:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
-
-
-.link{
-  margin:10px 0px 10px 50px;
-  color: white;
-}
-.menuButton{  
-  font-size: larger;
-  margin: 20px;
+.menuButton {
+  border: none;
+  background: none;
+  font-size: 24px;
   cursor: pointer;
-  font-weight: 800;
+  margin-right: 15px;
+}
+.sidebar:hover {
+  box-shadow: 4px 0px 20px rgba(0,0,0,0.2);
+}
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+.pageTitle:hover {
+  color: #6d28d9;
 }
 
 
-
-
+.content {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+  background-color: #f8fafc;
+  transition: 0.3s;
+}

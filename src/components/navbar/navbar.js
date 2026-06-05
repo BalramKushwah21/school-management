@@ -30,23 +30,22 @@ export default function Navbar({children}) {
         <Link href="/fees" className={style.link}>Fees</Link>
         <Link href="/reports" className={style.link}>Reports</Link>
         <Link href="/settings" className={style.link}>Settings</Link>
-
+        <Link href="/academics" className={style.link}>Academics</Link>
+        <Link href="/department" className={style.link}>Department</Link>
 
       </aside>
 
       <div className={style.container}>
 
   
-        <header className={style.header } style={{width: isMenuOpen?"82vw":"99vw"}}>
-
+      <header className={style.header}>
         <button className={style.menuButton} onClick={() => setIsMenuOpen(!isMenuOpen)}>
           ☰
         </button>
         <h1 className={style.pageTitle}>{page.toUpperCase()|| "DASHBOARD"}</h1>
 
         </header>
-
-      <main className={style.content} style={{width: isMenuOpen?"82vw":"100vw"}}>
+        <main className={style.content}>
         {children}
       </main>
     
