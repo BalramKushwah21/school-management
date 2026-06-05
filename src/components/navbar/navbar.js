@@ -13,7 +13,7 @@ export default function Navbar({children}) {
   
  
   return (
-    <div className={style.mainContainer}  >
+    <div className={style.mainContainer}>
       <aside className={style.sidebar} style={{display:isMenuOpen?"flex":"none",}} >
         <h2 className={style.logo}>School Management</h2>
         <Link href="/" className={style.link}>Dashboard</Link>
@@ -48,7 +48,7 @@ export default function Navbar({children}) {
         <main className={style.content}>
         {children}
       </main>
-    
+      
       </div>
     </div>
   );
