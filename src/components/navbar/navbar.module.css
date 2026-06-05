@@ -4,8 +4,8 @@
   background-color: #f0f2f7;
 }
 
-
 .sidebar {
+  
   display: flex;
   flex-direction: column;
   width: 260px;
@@ -14,22 +14,33 @@
   background: linear-gradient(180deg, #6d28d9, #9333ea);
   overflow-y: auto;
   box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+
+
+ 
+
+  transition:
+    width 0.4s ease,
+    min-width 0.4s ease,
+    transform 0.4s ease;
 }
 .sidebar:hover {
-  box-shadow: 4px 0px 20px rgba(0,0,0,0.2);
+  box-shadow: 4px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.closed {
+  width: 0;
+  min-width: 0;
+  transform: translateX(-100%);
 }
 
 .logo {
+  height:100px;
   color: white;
   text-align: center;
   padding: 25px 15px;
   font-size: 22px;
   font-weight: bold;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-}
-.logo:hover {
-  letter-spacing: 1px;
-  transform: scale(1.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .link {
@@ -43,11 +54,10 @@
 }
 
 .link:hover {
-  background-color: rgba(255,255,255,0.15);
+  background-color: rgba(255, 255, 255, 0.15);
   transform: translateX(8px);
-  box-shadow: 0 4px 10px rgba(255,255,255,0.15);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.15);
 }
-
 
 .container {
   flex: 1;
@@ -56,17 +66,17 @@
   overflow-x: hidden;
 }
 
-
 .header {
   display: flex;
   align-items: center;
   height: 70px;
   background-color: white;
   padding: 0 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
+
 .header:hover {
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 .menuButton {
   border: none;
@@ -76,7 +86,7 @@
   margin-right: 15px;
 }
 .sidebar:hover {
-  box-shadow: 4px 0px 20px rgba(0,0,0,0.2);
+  box-shadow: 4px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
 .pageTitle {
@@ -87,7 +97,6 @@
 .pageTitle:hover {
   color: #6d28d9;
 }
-
 
 .content {
   flex: 1;
