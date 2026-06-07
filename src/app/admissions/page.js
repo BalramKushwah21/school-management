@@ -1,43 +1,41 @@
 "use client";
 
-import React from 'react'
-import styles from "./admissions.module.css"
+import React from "react";
+import styles from "./admissions.module.css";
 import AdmissionCharts from "./admissionChart/page";
+import Image from "next/image";
 
 export default function admissionPage() {
-  const academicSections = [
-    
-    
-  ];
+
+  const star = "*";
 
   return (
     <div className={styles.container}>
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1>New Admission</h1>
+          <h1 className={styles.h1}>New Admission</h1>
 
-          <p>
+          <p className={styles.para}>
             Empowering students through innovation, critical thinking,
             creativity, and world-class education.
           </p>
 
           <div className={styles.heroButtons}>
-            <button className={styles.primaryBtn}>
-              New Admission
-            </button>
+            <button className={styles.primaryBtn}>New Admission</button>
 
-            <button className={styles.secondaryBtn}>
-              Admission History
-            </button>
+            <button className={styles.secondaryBtn}>Admission History</button>
           </div>
         </div>
 
-        <div className={styles.heroImage}>
-          <img
+        {/* <div className={styles.heroImage}> */}
+          <Image
+          className={styles.img}
             src="https://technocratsgroup.edu.in/wp-content/uploads/2024/02/TIT-CSE.jpg"
             alt="New Admission"
+            width={800}
+            height={800}
           />
-        </div>
+        {/* </div> */}
       </section>
 
       <section className={styles.stats}>
@@ -63,16 +61,15 @@ export default function admissionPage() {
       </section>
 
       {/* //Charts */}
-      <AdmissionCharts/>
+      <AdmissionCharts />
 
-{/* // form */}
+      {/* // form */}
       <section className={styles.formcontainer}>
         <div className={styles.formcard}>
           <h2 className={styles.title}>📋 Admission Form</h2>
-        
 
-        <form className={styles.form}>
-            <label className={styles.lebel}>Student Name *</label>
+          <form className={styles.form}>
+            <label className={styles.lebel}>Student Name {star}</label>
             <input
               type="text"
               placeholder="Student full name"
@@ -80,8 +77,8 @@ export default function admissionPage() {
               required
             />
 
-            <label className={styles.lebel}>Parents/Guardian Name</label>            
-              <input
+            <label className={styles.lebel}>Parents/Guardian Name</label>
+            <input
               type="text"
               placeholder="Parents/Guardian Name *"
               className={styles.input}
@@ -92,20 +89,17 @@ export default function admissionPage() {
               type="text"
               placeholder="Mother Name "
               className={styles.input}
-              />
+            />
 
             <label className={styles.lebel}>Village/City/Town</label>
             <input
               type="text"
               placeholder="Village/city/Town"
               className={styles.input}
-              />
+            />
 
             <label className={styles.lebel}>Admission Date</label>
-            <input
-              type="date"
-              className={styles.input}
-              />
+            <input type="date" className={styles.input} />
 
             <label className={styles.lebel}>Division</label>
             <select className={styles.input}>
@@ -121,83 +115,85 @@ export default function admissionPage() {
               <option>8th</option>
             </select>
 
-            
             <label className={styles.lebel}>Contact</label>
             <input
               type="tel"
               placeholder="Contact Number"
               className={styles.input}
-              />
+            />
 
             <label className={styles.lebel}>Student Email Id</label>
             <input
               type="email"
               placeholder="Email address"
               className={styles.input}
-              />
+            />
 
             <label className={styles.lebel}>Student Address</label>
             <input
               type="text"
               placeholder="Student Address"
               className={styles.input}
-              />
+            />
 
-            
             <div className={styles.uploadBox}>
               <label>Upload Documents</label>
               <input type="file" multiple />
             </div>
 
-            <button type="submit" className={styles.button}>
+            <button type="submit" className={styles.submitButton}>
               Submit Application
             </button>
-            
-
-        </form>
+          </form>
         </div>
-        
       </section>
 
+      {/* //footer */}
 
-
-{/* //footer */}
-     
       <footer className={styles.footer}>
-          <div className={styles.footerContainer}>
-
-              <div className={styles.footerSection}>
-                <h3>JAWAHAR NAVODAYA VIDYALAYA </h3>
-                <p>
-                  Providing quality equcation and shaping bright futures for students.
-                </p>
-              </div>
-
-              <div className={styles.footerSection}>
-                <h3>Quick Links</h3>
-                <ul>
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/">Teachers</a></li>
-                  <li><a href="/">Students</a></li>
-                  <li><a href="/">Examination</a></li>
-                  <li><a href="/">Department</a></li>
-
-                </ul>
-              </div>
-
-              <div className={styles.footerSection}>
-                  <h3>Contact Us</h3>
-                  <p>📍 Bhopal, Madhya Pradesh</p>
-                  <p>📞 +91 9876543210</p>
-                  <p>✉️<a href="https://navodaya.gov.in">  About</a> </p>
-              </div>
-
+        <div className={styles.footerContainer}>
+          <div className={styles.footerSection}>
+            <h3>JAWAHAR NAVODAYA VIDYALAYA </h3>
+            <p>
+              Providing quality equcation and shaping bright futures for
+              students.
+            </p>
           </div>
-          <div className={styles.bottomBar}>
-            © 2026 ABC School. All Rights Reserved.
+
+          <div className={styles.footerSection}>
+            <h3>Quick Links</h3>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/">Teachers</a>
+              </li>
+              <li>
+                <a href="/">Students</a>
+              </li>
+              <li>
+                <a href="/">Examination</a>
+              </li>
+              <li>
+                <a href="/">Department</a>
+              </li>
+            </ul>
           </div>
+
+          <div className={styles.footerSection}>
+            <h3>Contact Us</h3>
+            <p>📍 Bhopal, Madhya Pradesh</p>
+            <p>📞 +91 9876543210</p>
+            <p>
+              ✉️<a href="https://navodaya.gov.in"> About</a>{" "}
+            </p>
+          </div>
+        </div>
+        <div className={styles.bottomBar}>
+          © 2026 ABC School. All Rights Reserved.
+        </div>
       </footer>
-
     </div>
   );
 }

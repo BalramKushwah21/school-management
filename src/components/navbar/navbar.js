@@ -15,7 +15,7 @@ export default function Navbar({ children }) {
     <div className={style.mainContainer}>
       <aside className={`${style.sidebar} ${!isMenuOpen ? style.closed : ""}`}>
         <h2 className={style.logo}>School Management</h2>
-        <Link href="/" className={style.link}>
+        <Link href="/admin/dashboard" className={style.link}>
           Dashboard
         </Link>
         <Link href="/students" className={style.link}>
