@@ -1,4 +1,28 @@
 {
-    "editor.autoIndentOnPaste": true,
-    "editor.wrappingIndent": "indent"
+  "editor.autoIndent": "full",
+  "editor.autoIndentOnPaste": true,
+  "editor.wrappingIndent": "indent",
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.detectIndentation": false,
+  "css.validate": true,
+  "css.format.enable": true,
+  "files.associations": {
+    "*.module.css": "css"
+  },
+  "[css]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.autoIndent": "full",
+    "editor.autoClosingBrackets": "always",
+    "editor.defaultFormatter": "vscode.css-language-features",
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true
+  },
+  "editor.autoClosingBrackets": "always",
+  "editor.formatOnSave": true,
+  "prettier.printWidth": 80,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false
 }

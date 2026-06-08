@@ -6,7 +6,9 @@ import AdmissionCharts from "./admissionChart/page";
 import Image from "next/image";
 
 export default function admissionPage() {
+    
 
+ 
   const star = "*";
 
   return (
@@ -62,7 +64,7 @@ export default function admissionPage() {
 
       {/* //Charts */}
       <AdmissionCharts />
-
+     
       {/* // form */}
       <section className={styles.formcontainer}>
         <div className={styles.formcard}>
@@ -159,7 +161,7 @@ export default function admissionPage() {
               students.
             </p>
           </div>
-
+         
           <div className={styles.footerSection}>
             <h3>Quick Links</h3>
             <ul>
