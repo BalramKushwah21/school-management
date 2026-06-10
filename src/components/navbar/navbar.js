@@ -24,7 +24,7 @@ export default function Navbar({children}) {
         <Link href="/examinations" className={style.link}>Examinations</Link>
         <Link href="/assignments" className={style.link}>Assignment</Link>
         <Link href="/curriculum" className={style.link}>Curriculum</Link>
-        <Link href="/timetable" className={style.link}>Timetable</Link>
+        <Link href="/academics/timetable" className={style.link}>Timetable</Link>
         <Link href="/admissions" className={style.link}>Admissions</Link>
         <Link href="/library" className={style.link}>Library</Link>
         <Link href="/fees" className={style.link}>Fees</Link>
