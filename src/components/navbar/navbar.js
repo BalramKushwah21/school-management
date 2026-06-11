@@ -40,7 +40,7 @@ export default function Navbar({ children }) {
         <Link href="/curriculum" className={style.link}>
           Curriculum
         </Link>
-        <Link href="/timetable" className={style.link}>
+        <Link href="/general/timetable" className={style.link}>
           Timetable
         </Link>
         <Link href="/admissions" className={style.link}>
@@ -61,7 +61,7 @@ export default function Navbar({ children }) {
         <Link href="/academics" className={style.link}>
           Academics
         </Link>
-        <Link href="/department" className={style.link}>
+        <Link href="/admin/departments" className={style.link}>
           Department
         </Link>
       </aside>
