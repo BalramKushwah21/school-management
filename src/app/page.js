@@ -16,8 +16,8 @@ export default function Home() {
   } else {
     return (
       <div className={style.maincontainer}>
-            <Header />
-            <HomePage/>
+        <Header />
+        <HomePage />
       </div>
     );
   }

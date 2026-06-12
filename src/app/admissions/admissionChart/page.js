@@ -1,5 +1,5 @@
 // "use client";
-
+"use client";
 
 import {
   ResponsiveContainer,
@@ -113,10 +113,7 @@ export default function AdmissionCharts() {
                 label
               >
                 {classData.map((entry, index) => (
-                  <Cell
-                    key={index}
-                    fill={COLORS[index % COLORS.length]}
-                  />
+                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
 
