@@ -1,12 +1,67 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./admissions.module.css";
 import AdmissionCharts from "./admissionChart/page";
 import Image from "next/image";
 
+
 export default function admissionPage() {
-    
+    const [student, setStudent] = useState({
+        name: " ",
+        parent: "",
+        mother: "",
+        village_city: "",
+        admissionDate: "",
+        division: "",
+        contactNo: "",
+        email: "",
+        address: "",
+        document:"",
+    });
+
+    const handleChange = (e) => {
+        setStudent({
+            ...student,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const response = await fetch("/api/students/add_details", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(student),
+        });
+        if (!response.ok) {
+            const error = await response.json();
+            alert(error.error);
+            return;
+        }
+
+        const data = await response.json();
+
+        console.log(data);
+
+        alert("Student Admission Successfully!");
+
+        setStudent({
+            name: "",
+            parent: "",
+            mother: "",
+            village_city: "",
+            admissionDate: "",
+            division: "",
+            contactNo: "",
+            email: "",
+            address: "",
+            document: "",
+        });
+    };
 
  
   const star = "*";
@@ -70,10 +125,13 @@ export default function admissionPage() {
         <div className={styles.formcard}>
           <h2 className={styles.title}>📋 Admission Form</h2>
 
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <label className={styles.lebel}>Student Name {star}</label>
             <input
-              type="text"
+                          type="text"
+                          name="name"
+                          value={student.name}
+                          onChange={handleChange}
               placeholder="Student full name"
               className={styles.input}
               required
@@ -81,30 +139,46 @@ export default function admissionPage() {
 
             <label className={styles.lebel}>Parents/Guardian Name</label>
             <input
-              type="text"
+                          type="text"
+                          name="parent"
+                          value={student.parent}
+                          onChange={handleChange}
               placeholder="Parents/Guardian Name *"
               className={styles.input}
             />
 
             <label className={styles.lebel}>Mother Name</label>
             <input
-              type="text"
+                          type="text"
+                          name="mother"
+                          value={student.mother}
+                          onChange={handleChange}
               placeholder="Mother Name "
               className={styles.input}
             />
 
             <label className={styles.lebel}>Village/City/Town</label>
             <input
-              type="text"
+                          type="text"
+                          name="village_city"
+                          value={student.village_city}
+                          onChange={handleChange}
               placeholder="Village/city/Town"
               className={styles.input}
             />
 
             <label className={styles.lebel}>Admission Date</label>
-            <input type="date" className={styles.input} />
+                      <input type="date"
+                          name="admissionDate"
+                          value={student.admissionDate}
+                          onChange={handleChange}
+                          className={styles.input} />
 
             <label className={styles.lebel}>Division</label>
-            <select className={styles.input}>
+                      <select name="division"
+                          value={student.division}
+                          onChange={handleChange}
+                          className={styles.input}>
               <option>Class Applying For</option>
               <option>Nursery</option>
               <option>1st</option>
@@ -119,28 +193,48 @@ export default function admissionPage() {
 
             <label className={styles.lebel}>Contact</label>
             <input
-              type="tel"
+                          type="tel"
+                          name="contactNo"
+                          value={student.contactNo}
+                          onChange={handleChange}
               placeholder="Contact Number"
               className={styles.input}
             />
 
             <label className={styles.lebel}>Student Email Id</label>
             <input
-              type="email"
+                          type="email"
+                          name="email"
+                          value={student.email}
+                          onChange={handleChange}
               placeholder="Email address"
               className={styles.input}
             />
 
             <label className={styles.lebel}>Student Address</label>
             <input
-              type="text"
+                          type="text"
+                          name="address"
+                          value={student.address}
+                          onChange={handleChange}
               placeholder="Student Address"
               className={styles.input}
             />
 
             <div className={styles.uploadBox}>
               <label>Upload Documents</label>
-              <input type="file" multiple />
+                          <input
+                              name="document"
+                              type="file"
+                              multiple
+                              
+                            //   onChange={(e) =>
+                            //       setStudent({
+                            //           ...student,
+                            //           document: e.target.files,
+                            //       })
+                            //   }
+                               />
             </div>
 
             <button type="submit" className={styles.submitButton}>
