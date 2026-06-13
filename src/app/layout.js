@@ -21,6 +21,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+ const user = "admin";
+
   return (
     <html lang="en">
       <body>
