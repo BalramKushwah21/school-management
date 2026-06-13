@@ -4,65 +4,40 @@ import style from "./navbar.module.css";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
+import { getNavigationForRole } from "@/auth/roles";
+import { useAuth } from "@/auth/auth-provider";
 
 export default function Navbar({ children }) {
   const pathname = usePathname();
-  const page = pathname.split("/")[1];
+  const segments = pathname.split("/").filter(Boolean);
+  const currentPage = segments[segments.length - 1] || "home";
+  const page = currentPage
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { role, logout } = useAuth();
+  const navigation = getNavigationForRole(role);
 
   return (
     <div className={style.mainContainer}>
       <aside className={`${style.sidebar} ${!isMenuOpen ? style.closed : ""}`}>
         <h2 className={style.logo}>School Management</h2>
-        <Link href="/" className={style.link}>
-          Dashboard
-        </Link>
-        <Link href="/students" className={style.link}>
-          Students
-        </Link>
-        <Link href="/teachers" className={style.link}>
-          Teachers
-        </Link>
-        <Link href="/courses" className={style.link}>
-          Classes
-        </Link>
-        <Link href="/attendance" className={style.link}>
-          Attendance
-        </Link>
-        <Link href="/examinations" className={style.link}>
-          Examinations
-        </Link>
-        <Link href="/assignments" className={style.link}>
-          Assignment
-        </Link>
-        <Link href="/curriculum" className={style.link}>
-          Curriculum
-        </Link>
-        <Link href="/timetable" className={style.link}>
-          Timetable
-        </Link>
-        <Link href="/admissions" className={style.link}>
-          Admissions
-        </Link>
-        <Link href="/library" className={style.link}>
-          Library
-        </Link>
-        <Link href="/fees" className={style.link}>
-          Fees
-        </Link>
-        <Link href="/reports" className={style.link}>
-          Reports
-        </Link>
-        <Link href="/settings" className={style.link}>
-          Settings
-        </Link>
-        <Link href="/academics" className={style.link}>
-          Academics
-        </Link>
-        <Link href="/department" className={style.link}>
-          Department
-        </Link>
+        <div className={style.roleTag}>{role ? role.toUpperCase() : "VISITOR"}</div>
+        {navigation.map((item) => (
+          <Link key={item.href} href={item.href} className={style.link}>
+            {item.label}
+          </Link>
+        ))}
+        {role ? (
+          <button className={style.logoutButton} onClick={logout} type="button">
+            Logout
+          </button>
+        ) : (
+          <Link href="/login" className={style.loginButton}>
+            Login
+          </Link>
+        )}
       </aside>
 
       <div className={style.container}>
@@ -74,7 +49,7 @@ export default function Navbar({ children }) {
             ☰
           </button>
           <h1 className={style.pageTitle}>
-            {page.toUpperCase() || "DASHBOARD"}
+            {page || "HOME"}
           </h1>
         </header>
         <main className={style.content}>{children}</main>

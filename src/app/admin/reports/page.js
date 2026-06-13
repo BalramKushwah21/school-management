@@ -1,0 +1,13 @@
+export default function AdminReportsPage() {
+  return (
+    <main className="rounded-[28px] bg-white p-8 shadow-sm ring-1 ring-slate-200/70">
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-700">
+        Admin / Reports
+      </p>
+      <h1 className="mt-3 text-3xl font-bold text-slate-900">Reports</h1>
+      <p className="mt-3 max-w-2xl text-slate-600">
+        Summary reports, analytics, and management insights are grouped here.
+      </p>
+    </main>
+  );
+}
