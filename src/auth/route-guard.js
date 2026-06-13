@@ -2,7 +2,13 @@
 
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { canAccessPath, getRoleHome, publicRoutes } from "./roles";
+import {
+  canAccessPath,
+  getRoleHome,
+  isLoginPath,
+  isPublicPath,
+  stripSchoolPath,
+} from "./roles";
 import { useAuth } from "./auth-provider";
 
 export default function RouteGuard({ children }) {
@@ -15,18 +21,20 @@ export default function RouteGuard({ children }) {
       return;
     }
 
-    if (!role && !canAccessPath(role, pathname)) {
+    const { school } = stripSchoolPath(pathname);
+
+    if (!role && !isPublicPath(pathname)) {
       router.replace("/login");
       return;
     }
 
-    if (role && pathname === "/login") {
-      router.replace(getRoleHome(role));
+    if (role && isLoginPath(pathname)) {
+      router.replace(getRoleHome(role, school));
       return;
     }
 
     if (role && !canAccessPath(role, pathname)) {
-      router.replace(getRoleHome(role));
+      router.replace(getRoleHome(role, school));
     }
   }, [hydrated, pathname, role, router]);
 
@@ -38,11 +46,11 @@ export default function RouteGuard({ children }) {
     );
   }
 
-  if (!role && !publicRoutes.includes(pathname)) {
+  if (!role && !isPublicPath(pathname)) {
     return null;
   }
 
-  if (role && pathname === "/login") {
+  if (role && isLoginPath(pathname)) {
     return null;
   }
 

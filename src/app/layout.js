@@ -1,19 +1,7 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
 import { AuthProvider } from "@/auth/auth-provider";
 import RouteGuard from "@/auth/route-guard";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 
 export const metadata = {
   title: "School Management",
@@ -21,19 +9,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
- const user = "admin";
-
   return (
     <html lang="en">
       <body>
-      <AuthProvider>
-        <Navbar>
-          <RouteGuard>{children}</RouteGuard>
-        </Navbar>
-      </AuthProvider>
+        <AuthProvider>
+          <RouteGuard>
+            <Navbar>{children}</Navbar>
+          </RouteGuard>
+        </AuthProvider>
       </body>
     </html>  
   );
-
-  
 }

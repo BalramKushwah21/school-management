@@ -1,44 +1,40 @@
 export const roles = ["admin", "teacher", "parent", "student"];
 
 export const roleHome = {
-  admin: "/admin",
-  teacher: "/teacher",
-  parent: "/parent",
-  student: "/student",
+  admin: "/admin/dashboard",
+  teacher: "/teacher/dashboard",
+  parent: "/parent/dashboard",
+  student: "/student/dashboard",
 };
 
 export const roleNavigation = {
   visitor: [
     { label: "Home", href: "/" },
-    { label: "About", href: "/visitor/about" },
-    { label: "Contact", href: "/visitor/contact" },
-    { label: "Admission", href: "/visitor/admission" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+    { label: "Admission", href: "/admission" },
   ],
   admin: [
-    { label: "Home", href: "/" },
-    { label: "Admin", href: "/admin" },
+    { label: "Dashboard", href: "/admin/dashboard" },
     { label: "Manage Students", href: "/admin/manage-students" },
     { label: "Manage Teachers", href: "/admin/manage-teachers" },
     { label: "Fees", href: "/admin/fees" },
     { label: "Reports", href: "/admin/reports" },
   ],
   teacher: [
-    { label: "Home", href: "/" },
-    { label: "Teacher", href: "/teacher" },
+    { label: "Dashboard", href: "/teacher/dashboard" },
     { label: "Attendance", href: "/teacher/attendance" },
     { label: "Marks", href: "/teacher/marks" },
     { label: "Student Progress", href: "/teacher/student-progress" },
   ],
   parent: [
-    { label: "Home", href: "/" },
-    { label: "Parent", href: "/parent" },
+    { label: "Dashboard", href: "/parent/dashboard" },
     { label: "Fees Status", href: "/parent/fees-status" },
     { label: "Notifications", href: "/parent/notifications" },
     { label: "Child Progress", href: "/parent/child-progress" },
   ],
   student: [
-    { label: "Home", href: "/" },
-    { label: "Student", href: "/student" },
+    { label: "Dashboard", href: "/student/dashboard" },
     { label: "Profile", href: "/student/profile" },
     { label: "Results", href: "/student/results" },
     { label: "Notifications", href: "/student/notifications" },
@@ -48,23 +44,51 @@ export const roleNavigation = {
 export const publicRoutes = [
   "/",
   "/login",
-  "/visitor",
-  "/visitor/home",
-  "/visitor/about",
-  "/visitor/contact",
-  "/visitor/admission",
+  "/register",
+  "/auth/register",
+  "/pricing",
+  "/register-school",
+  "/about",
+  "/contact",
+  "/admission",
 ];
 
-export function getRoleHome(role) {
-  return roleHome[role] || "/login";
+export const loginRoutes = ["/login"];
+
+export function stripSchoolPath(pathname) {
+  const match = pathname.match(/^\/school\/([^/]+)(\/.*)?$/);
+  if (!match) {
+    return { school: null, rest: pathname };
+  }
+
+  return { school: match[1], rest: match[2] || "/" };
+}
+
+export function getRoleHome(role, school = null) {
+  const home = roleHome[role] || "/login";
+  if (!school) {
+    return home;
+  }
+
+  return home === "/" ? `/school/${school}` : `/school/${school}${home}`;
 }
 
 export function getNavigationForRole(role) {
   return roleNavigation[role] || roleNavigation.visitor;
 }
 
+export function isPublicPath(pathname) {
+  const { rest } = stripSchoolPath(pathname);
+  return publicRoutes.includes(rest);
+}
+
+export function isLoginPath(pathname) {
+  const { rest } = stripSchoolPath(pathname);
+  return loginRoutes.includes(rest);
+}
+
 export function canAccessPath(role, pathname) {
-  if (publicRoutes.includes(pathname)) {
+  if (isPublicPath(pathname)) {
     return true;
   }
 
@@ -72,20 +96,22 @@ export function canAccessPath(role, pathname) {
     return false;
   }
 
-  if (role === "admin") {
-    return pathname.startsWith("/admin");
+  const { rest } = stripSchoolPath(pathname);
+
+  if (rest.startsWith("/admin")) {
+    return role === "admin";
   }
 
-  if (role === "teacher") {
-    return pathname.startsWith("/teacher");
+  if (rest.startsWith("/teacher")) {
+    return role === "teacher";
   }
 
-  if (role === "parent") {
-    return pathname.startsWith("/parent");
+  if (rest.startsWith("/parent")) {
+    return role === "parent";
   }
 
-  if (role === "student") {
-    return pathname.startsWith("/student");
+  if (rest.startsWith("/student")) {
+    return role === "student";
   }
 
   return false;
