@@ -12,11 +12,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <AuthProvider>
-          <RouteGuard>
-            <Navbar>{children}</Navbar>
-          </RouteGuard>
-        </AuthProvider>
+        
+            {children}
+        
       </body>
     </html>  
   );
