@@ -1,34 +1,52 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-// import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
 import { compare } from "bcryptjs";
 
-
-const adapter = PrismaAdapter(prisma, { prismaPg: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });
-
 const handler = NextAuth({
-  adapter,
+  adapter: PrismaAdapter(prisma),
+
   providers: [
     CredentialsProvider({
       name: "Credentials",
+
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
+        email: {
+          label: "Email",
+          type: "email",
+        },
+        password: {
+          label: "Password",
+          type: "password",
+        },
       },
+
       async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) {
+        if (!credentials?.email || !credentials?.password) {
           return null;
         }
 
-        const user = await prisma.user.findUnique({ where: { email: credentials.email } });
-        if (!user || !user.password) {
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials.email,
+          },
+        });
+
+        if (!user) {
           return null;
         }
 
-        const isValid = await compare(credentials.password, user.password);
-        if (!isValid) {
+        if (!user.password) {
+          return null;
+        }
+
+        const isPasswordValid = await compare(
+          credentials.password,
+          user.password
+        );
+
+        if (!isPasswordValid) {
           return null;
         }
 
@@ -42,36 +60,38 @@ const handler = NextAuth({
       },
     }),
   ],
+
   session: {
     strategy: "jwt",
   },
+
   callbacks: {
-    async session({ session, token }) {
-      if (token) {
-        session.user = {
-          id: token.id,
-          email: token.email,
-          name: token.name,
-          role: token.role,
-          schoolId: token.schoolId,
-        };
-      }
-      return session;
-    },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.email = user.email;
-        token.name = user.name;
         token.role = user.role;
         token.schoolId = user.schoolId;
       }
+
       return token;
     },
+
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id;
+        session.user.role = token.role;
+        session.user.schoolId = token.schoolId;
+      }
+
+      return session;
+    },
   },
+
   pages: {
     signIn: "/login",
   },
+
+  secret: process.env.NEXTAUTH_SECRET,
 });
 
 export { handler as GET, handler as POST };
