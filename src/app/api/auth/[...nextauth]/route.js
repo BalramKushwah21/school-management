@@ -1,9 +1,10 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaPg } from "@prisma/adapter-pg";
+// import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
 import { compare } from "bcryptjs";
+
 
 const adapter = PrismaAdapter(prisma, { prismaPg: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });
 

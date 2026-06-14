@@ -1,4 +1,5 @@
 {
     "editor.autoIndentOnPaste": true,
-    "editor.wrappingIndent": "indent"
+    "editor.wrappingIndent": "indent",
+    "prisma.pinToPrisma6": true
 }
